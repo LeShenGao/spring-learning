@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/index")
-    public String index() {
-        return "index";
-    }
-
     @RequestMapping("/advice")
     public String testException(@ModelAttribute("msg") String msg) {
         throw new IllegalArgumentException("参数有误，来自 @ModelAttribute:" + msg);
