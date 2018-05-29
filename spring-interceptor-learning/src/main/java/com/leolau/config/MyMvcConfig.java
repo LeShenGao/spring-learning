@@ -27,6 +27,10 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
+    /**
+     * config static resources visit path
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
