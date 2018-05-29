@@ -1,12 +1,11 @@
 package com.leolau.controller;
 
 import com.leolau.entity.User;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户Controller
@@ -55,5 +54,20 @@ public class UserController {
         return user;
     }
 
-
+    /**
+     * register user info
+     * password info in request path inside,can use annotation @PathVariable identification parameter info
+     *
+     * @param password
+     * @return result info
+     */
+    @RequestMapping(value = "/register/{password}", produces = "application/json;charset=UTF-8")
+    public Map<String, Object> register(@PathVariable(value = "password") String password) {
+        User user = new User();
+        user.setPassword(password);
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 200);
+        map.put("msg", "success");
+        return map;
+    }
 }
