@@ -1,9 +1,13 @@
 package com.leolau.controller;
 
 import com.leolau.entity.User;
+import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,5 +73,26 @@ public class UserController {
         map.put("code", 200);
         map.put("msg", "success");
         return map;
+    }
+
+    /**
+     * fileUpload
+     *
+     * @param file
+     * @return
+     */
+    @RequestMapping(value = "/upload", produces = "application/json;charset=UTF-8")
+    public Map<String, Object> fileUpload(MultipartFile file) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            FileUtils.writeByteArrayToFile(new File("d:/upload/" + file.getOriginalFilename()), file.getBytes());
+            result.put("code", 200);
+            result.put("msg", "success");
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.put("code", -1);
+            result.put("msg", "error");
+        }
+        return result;
     }
 }
