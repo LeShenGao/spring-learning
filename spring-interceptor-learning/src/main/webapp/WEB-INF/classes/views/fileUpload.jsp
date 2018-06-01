@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: LeoGao
-  Date: 2018/5/28
-  Time: 23:00
+  User: Administrator
+  Date: 2018/5/31
+  Time: 17:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-    welcome to java world!
+<form method="post" enctype="multipart/form-data" action="/user/upload">
+    <input type="file" name="file"/><br/>
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>
